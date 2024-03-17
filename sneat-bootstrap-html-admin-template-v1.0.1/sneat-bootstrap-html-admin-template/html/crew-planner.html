@@ -633,8 +633,16 @@ id='logout'>
                 </div>
                  <div class="w-100 mt-3 card p-4" >
                 <h5 class="mb-4">Add Crew Planner</h5>
-                
-                <form id="addCrewForm">
+                <div class="accordion" id="crewFormAccordion">
+                  <div class="accordion-item">
+                      <h2 class="accordion-header" id="crewFormHeading">
+                          <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#crewFormCollapse" aria-expanded="true" aria-controls="crewFormCollapse">
+                              Crew Form
+                          </button>
+                      </h2>
+                      <div id="crewFormCollapse" class="accordion-collapse collapse hide" aria-labelledby="crewFormHeading" data-bs-parent="#crewFormAccordion">
+                          <div class="accordion-body">
+                              <form id="addCrewForm">
                     <div class="col mb-3">
                         <div class="form-floating">
                           <select id="candidate_c_rank" class="form-select" required>
@@ -736,7 +744,12 @@ id='logout'>
 
                     <button type="submit" class="btn btn-primary" >Add Crew Planner</button>
                     </div>
-                </form>
+                  </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    
         
                
             

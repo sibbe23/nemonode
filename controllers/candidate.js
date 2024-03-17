@@ -12,7 +12,7 @@ const jwt = require('jsonwebtoken');
 const sequelize = require('../util/database')
 const {Op} = require('sequelize')
 const validate = (inputString) => inputString !== undefined && inputString.length !== 0;
-
+const SeaService = require('../models/seaservice')
 const Calls = require('../models/todaysCalls')
 
 const add_candidate = async (req, res) => {
@@ -627,6 +627,24 @@ const getAllSeaService = async (req, res) => {
         res.status(500).json({ message: 'Internal Server Error' });
     }
 };
+const getSea = async (req, res) => {
+    try {
+        const id = req.params.id;
+        const sea = await SeaService.findAll({
+            where: {
+                candidateId: id
+            }
+        });
+        res.status(200).json({
+            editSea: sea,
+            success: true,
+        });
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ message: 'Internal Server Error' });
+    }
+}
+
 
 const deleteSeaService = async (req, res) => {
     const seaServiceId = req.params.id;
@@ -1663,5 +1681,6 @@ module.exports = {
     Reminder,
     getCallCount,
     countOperations,
-    calls_made
+    calls_made,
+    getSea
 };

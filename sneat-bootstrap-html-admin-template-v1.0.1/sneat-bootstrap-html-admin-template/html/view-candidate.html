@@ -642,6 +642,7 @@ id='logout'>
                                   <button type="button" class="btn btn-primary mb-2" onclick="loadContent('travel')">Travel</button>
                                   <button type="button" class="btn btn-primary mb-2" onclick="loadContent('medical')">Medical</button>
                                   <button type="button" class="btn btn-primary mb-2" onclick="loadContent('nkd')">NKD</button>
+                                  <button type="button" class="btn btn-primary mb-2" onclick="loadContent('seaService')">Sea Service</button>
                                   <!-- Content will be dynamically replaced here -->
                               </div>
                               
@@ -1620,6 +1621,38 @@ id='logout'>
                                 </div>
                                 
                                 </div>
+                                <div id="seaServiceContent" style="display: none;">
+                                  <div class="content-wrapper mt-3 rounded-3">
+                                      <div class="w-100 mt-3">
+                                          <div class="">
+                                              <h4 class="text-center mt-3 mb-0 rounded-0 shadow-none border border-dark card p-3">Sea Service Records</h4>
+                              
+                                              <div class="table-responsive text-center">
+                                                  <table id="seaServiceTable" class="table table-sm table-striped table-bordered" style="font-size: 12px;">
+                                                      <thead>
+                                                          <tr>
+                                                              <th scope="col">Company</th>
+                                                              <th scope="col">Rank</th>
+                                                              <th scope="col">Vessel</th>
+                                                              <th scope="col">Type</th>
+                                                              <th scope="col">DWT</th>
+                                                              <th scope="col">From</th>
+                                                              <th scope="col">To</th>
+                                                              <th scope="col">Total MMDD</th>
+                                                              <th scope="col">Reason for Sign Off</th>
+                                                              <th scope="col">Actions</th>
+                                                          </tr>
+                                                      </thead>
+                                                      <tbody id="seaServiceList">
+                                                          <!-- Sea service records will be dynamically added here -->
+                                                      </tbody>
+                                                  </table>
+                                              </div>
+                                          </div>
+                                      </div>
+                                  </div>
+                              </div>
+                              
                     
                                 <!-- Buttons for different sections -->
                                

@@ -114,3 +114,26 @@ function updateDateTime() {
 // Update date and time initially and every second
 updateDateTime();
 setInterval(updateDateTime, 1000);
+
+// This JavaScript part fetches the data from the server and updates the counts dynamically.
+
+
+const fetchCandidates = async () => {
+  try {
+    const response = await axios.get(`http://localhost:3000/candidate/view-candidate`, { headers: { "Authorization": token } });
+    const candidateData = response.data;
+
+    // Filter candidates based on company_status and count active and inactive candidates
+    const activeCandidates = candidateData.candidates.filter(candidate => candidate.company_status === 'active');
+    const inactiveCandidates = candidateData.candidates.filter(candidate => candidate.company_status !== 'active');
+
+    // Update the active and inactive counts in the HTML
+    document.getElementById('activeCount').textContent = activeCandidates.length;
+    document.getElementById('inactiveCount').textContent = inactiveCandidates.length;
+  } catch (error) {
+    console.error('Error fetching candidates:', error);
+  }
+};
+
+// Call the fetchCandidates function when the component loads
+fetchCandidates();

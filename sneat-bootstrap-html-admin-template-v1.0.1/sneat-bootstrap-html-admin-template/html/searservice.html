@@ -15,7 +15,7 @@
       content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0"
     />
 
-    <title>Contract Details | Nsnemo </title>
+    <title>Vessel | Nsnemo</title>
 
     <meta name="description" content="" />
 
@@ -32,7 +32,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Manage Company | Nsnemo</title>
+    <title>Add Company - Nsnemo</title>
     <script src="https://cdn.jsdelivr.net/npm/axios@1.1.2/dist/axios.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 
@@ -338,7 +338,7 @@
               </ul>
             </li>
 
-            <li class="menu-item">
+              <li class="menu-item">
               <a href="javascript:void(0);" class="menu-link menu-toggle">
                 <i class="menu-icon tf-icons bx bx-dock-top"></i>
                 <div data-i18n="Account Settings">Country List</div>
@@ -349,7 +349,12 @@
                     <div data-i18n="Account">View</div>
                   </a>
                 </li>
-                
+                <!-- <li class="menu-item">
+                  <a href="view-company.html" class="menu-link">
+                    <div data-i18n="Account">List</div>
+                  </a>
+                </li> -->
+
                 
                 
               </ul>
@@ -467,7 +472,6 @@
                 <div data-i18n="Documentation">Search</div>
               </a>
             </li>
-            
             <li class="menu-item">
               <a
                 href="./crew-planner.html"
@@ -487,7 +491,7 @@
         <div class="layout-page">
           <!-- Navbar -->
 
-          <nav style="z-index: 0;"
+          <nav
             class="layout-navbar container-xxl navbar navbar-expand-xl navbar-detached align-items-center bg-navbar-theme"
             id="layout-navbar"
           >
@@ -555,9 +559,7 @@
                     <li>
                       <a class="dropdown-item" href="#">
                         <i class="bx bx-user me-2"></i>
-                        <span class="align-middle">My Profile</span>
-                      </a>
-                    </li>
+                      li>
                     <li>
                       <a class="dropdown-item" href="#">
                         <i class="bx bx-cog me-2"></i>
@@ -593,331 +595,289 @@ id='logout'>
           <!-- / Navbar -->
 
           <!-- Content wrapper -->
-          <div class="container-fluid ">
-
-            <div class="content-wrapper mt-3 rounded-3">
-              <div class=" mt-0">
-                <div class="col-lg-3 ">
-                    <div class="btn-group">
-                        <button
-                            type="button"
-                            class="btn btn-primary dropdown-toggle hide-arrow"
-                            data-bs-toggle="dropdown"
-                            aria-expanded="false"
-                            
-                        >
-                            ≡ EDIT CANDIDATE</i>
-                        </button>
-                        <ul class="dropdown-menu" >
-                            <li><a class="dropdown-item" id="personnel" >> PERSONNEL</a></li>
-                            <li><a class="dropdown-item" id="discussion" >> DISCUSSION</a></li>
-                            <li><a class="dropdown-item" id="contract">> CONTRACT</a></li>
-                            <li><a class="dropdown-item" id="document">> DOCUMENT</a></li>
-                            <li><a class="dropdown-item" id="bank">> BANK</a></li>
-                            <li><a class="dropdown-item" id="travel">> TRAVEL</a></li>
-                            <li><a class="dropdown-item" id="medicals">> MEDICALS</a></li>
-                            <li><a class="dropdown-item" id="nkd">> NKD</a></li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-                <div class="w-100 mt-1">
-                    <div class="   ms-0 me-0">
-                      <h4 class="text-center mt-3 mb-0 rounded-0 shadow-none border border-dark  card p-3">Contract table</h4>
-            
+          <div class="container-fluid p-5">
+           
+        
+        
+               <div class="container mt-5">
+                  <h2 class="text-center mb-4">Sea Service Form</h2>
+                  <form id="sea-service-form">
+                    <div class="row">
                       
-                        <div class="table-responsive text-center">
-                          <table id="contractTable" class="table table-sm table-striped table-bordered " style="font-size: 12px;">
-                              <thead>
-                                  <tr>
-                                      
-                                      <th scope="col"  style="font-size: 8px;">Rank</th>
-                                      <th scope="col" style="font-size: 8px;">Company</th>
-                                      <th scope="col" style="font-size: 8px;">VSL Name</th>
-                                      <th scope="col" style="font-size: 8px;">Vessel Type</th>
-                                      <th scope="col" style="font-size: 8px;">SignOn Port</th>
-                                      <th scope="col" style="font-size: 8px;">SignOn</th>
-                                      <th scope="col" style="font-size: 8px;">Wages Start</th>
-                                      <th scope="col" style="font-size: 8px;">EOC</th>
-                                      <th scope="col" style="font-size: 8px;">Wages</th>
-                                      <th scope="col" style="font-size: 8px;">Currency</th>
-                                      <th scope="col" style="font-size: 8px;">Wages Type</th>
-                                      <th scope="col" style="font-size: 8px;">SignOff</th>
-                                      <th scope="col" style="font-size: 8px;">SignOff Port</th>
-                                      <th scope="col" style="font-size: 8px;">Signoff Reason</th>
-                                      <th scope="col" style="font-size: 8px;">AOA Number</th>
-                                      <th scope="col"  style="font-size: 8px;">Emigrate Number</th>
-                                      <th scope="col" style="font-size: 8px;">Document</th>
-                                      <th scope="col"style="font-size: 8px;">AOA</th>
-                                      <th scope="col" style="font-size: 8px;">Actions</th>
-                                  </tr>
-                              </thead>
-                              <tbody id="contractTableBody">
-                                  <!-- Add more rows for additional entries -->
-                              </tbody>
-                          </table>
-                          <div id="pagination-controls"></div>
-
+                      <div class="col-md-6">
+                        <label for="company" class="form-label">Company</label>
+                        <input type="text" class="form-control" id="company" required>
+                      </div>
+                      <div class="col-md-6">
+                        <label for="createdBy" class="form-label">Created By</label>
+                        <input type="text" class="form-control" id="createdBy" required>
                       </div>
                     </div>
-                </div>
-            </div>
-            
-            
-
-
-            <div class="content-wrapper">
-                <!-- Content -->
-                <div class="w-100 mt-0 mb-0 p-0 " >
-                    <form id="contractForm" class="">
-                        
-            
-                        <div class="">
-                          <!-- Bootstrap Accordion -->
-                          <div class="accordion" id="documentAccordion">
-                            <div class="accordion-item">
-                                <h2 class="accordion-header" id="documentHeading">
-                                    <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#documentCollapse" aria-expanded="true" aria-controls="documentCollapse">
-                                       Click here to Add Contract
-                                    </button>
-                                </h2>
-                                <div id="documentCollapse" class="accordion-collapse collapse" aria-labelledby="documentHeading" data-bs-parent="#documentAccordion">
-                                    <div class="accordion-body">
-                                              <!-- Form Content -->
-                            <form class="card" id="contractForm">
-
-                                <div class="row mb-3">
-                                    <div class="col-md-6">
-                                        <div class="form-floating">
-                                            <select id="candidate_c_rank" class="form-select" required>
-                                                <option value="" disabled selected>-- Select Rank --</option>
-                                                <!-- Options will be dynamically added using JavaScript -->
-                                            </select>
-                                            <label for="candidate_c_rank" class="form-label">Rank</label>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <div class="form-floating">
-                                            <select id="contract_company" class="form-select" required>
-                                                <option value="" disabled selected>-- Select Company --</option>
-                                                <!-- Options will be dynamically added using JavaScript -->
-                                            </select>
-                                            <label for="contract_company" class="form-label">Company</label>
-                                        </div>
-                                    </div>
-                                </div>
-            
-                                <div class="row mb-3">
-                                    <div class="col-md-6">
-                                        <div class="form-floating">
-                                            <select id="contract_vsl" class="form-select" required>
-                                                <!-- Options will be dynamically added using JavaScript -->
-                                            </select>
-                                            <label for="contract_vsl" class="form-label">Select Vessel</label>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <div class="form-floating">
-                                            <select id="candidate_c_vessel" class="form-select" required>
-                                                <!-- Options will be dynamically added using JavaScript -->
-                                            </select>
-                                            <label for="candidate_c_vessel" class="form-label">Vessel type</label>
-                                        </div>
-                                    </div>
-                                </div>
-            
-                                <div class="row mb-3">
-                                    <div class="col-md-6">
-                                        <div class="form-floating">
-                                            <select id="contract_signonport" class="form-select" required>
-                                                <!-- Options will be dynamically added using JavaScript -->
-                                            </select>
-                                            <label for="contract_signonport" class="form-label">Sign on Port</label>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <div class="form-floating">
-                                            <input name="signon" type="date" id="contract_signon" class="form-control"/>
-                                            <label for="contract_signon">Sign on</label>
-                                        </div>
-                                    </div>
-                                </div>
-            
-                                <div class="row mb-3">
-                                    <div class="col-md-6">
-                                        <div class="form-floating">
-                                            <input name="wage" type="date" id="contract_wage_start" class="form-control"/>
-                                            <label for="contract_wage_start">Wages start</label>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <div class="form-floating">
-                                            <input name="eoc" type="date" id="contract_eoc" class="form-control"/>
-                                            <label for="contract_eoc">EOC</label>
-                                        </div>
-                                    </div>
-                                </div>
-            
-                                <div class="row mb-3">
-                                    <div class="col-md-6">
-                                        <div class="form-floating">
-                                            <input name="wages" type="text" id="contract_wages" class="form-control"/>
-                                            <label for="contract_wages">Wages</label>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <div class="form-floating">
-                                            <select name="currency" id="contract_currency" class="form-select">
-                                                <option value="AED">AED</option>
-                                                <option value="BMD">BMD</option>
-                                                <option value="EUR">EUR</option>
-                                                <option value="GBP">GBP</option>
-                                                <option value="INR">INR</option>
-                                                <option value="MYR">MYR</option>
-                                                <option value="SGD">SGD</option>
-                                                <option value="USD">USD</option>
-                                            </select>
-                                            <label for="contract_currency">Currency</label>
-
-                                        </div>
-                                    </div>
-                                </div>
-            
-                                <div class="row mb-3">
-                                    <div class="col-md-6">
-                                        <div class="form-floating">
-                                            <select name="wagestype" id="contract_wagestype" class="form-select">
-                                                <option value="Nett">Nett</option>
-                                                <option value="Gross">Gross</option>
-                                                <option value="PerDay">Per Day</option>
-                                                <option value="PerMonth">Per Month</option>
-                                            </select>
-                                            <label for="contract_wagestype">Wages Type</label>
-
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <div class="form-floating">
-                                            <input name="signoff" type="date" id="contract_signoff" class="form-control"/>
-                                            <label for="contract_signoff">Sign off</label>
-
-                                        </div>
-                                    </div>
-                                </div>
-            
-                                <div class="row mb-3">
-                                    <div class="col-md-6">
-                                        <div class="form-floating">
-                                            <select id="contract_signoffport" class="form-select">
-                                                <!-- Options will be dynamically added using JavaScript -->
-                                            </select>
-                                            <label for="contract_signoffport" class="form-label">Sign off Port</label>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <div class="form-floating">
-                                            <input name="reason" type="text" id="contracts_reason" class="form-control"/>
-                                            <label for="contracts_reason">Reason for Sign off</label>
-                                        </div>
-                                    </div>
-                                </div>
-            
-                                <div class="row mb-3">
-                                    <div class="col-md-6">
-                                        <div class="form-floating">
-                                            <input name="doc" type="file" id="contract_document" class="form-control"/>
-                                            <label for="contract_document">Document</label>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <div class="form-floating">
-                                            <input name="aoa" type="file" id="contract_aoa" class="form-control"/>
-                                            <label for="contract_aoa">AOA</label>
-                                        </div>
-                                    </div>
-                                </div>
-            
-                                <div class="row mb-3">
-                                    <div class="col-md-6">
-                                        <div class="form-floating">
-                                            <input name="aoanum" type="text" id="contract_aoa_num" class="form-control"/>
-                                            <label for="contract_aoa_num">AOA Number</label>
-
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <div class="form-floating">
-                                            <input name="enumber" type="text" id="contract_emigrate" class="form-control"/>
-                                            <label for="contract_emigrate">Emigrate Number</label>
-                                        </div>
-                                    </div>
-                                </div>
-            
-                                <div class="card-footer text-end pt-0 pe-0 pb-1">
-
-                                        <button type="submit" class="btn btn-primary  ">ADD CONTRACT</button>
-
-                                    </div>
-                                    
-                                
-                            </form>
-                          </div>
-                        </div>
+                    <div class="row mt-3">
+                      <div class="col-md-6">
+                        <label for="rank" class="form-label">Rank</label>
+                        <input type="text" class="form-control" id="rank" required>
+                      </div>
+                      <div class="col-md-6">
+                        <label for="vessel" class="form-label">Vessel</label>
+                        <input type="text" class="form-control" id="vessel" required>
+                      </div>
                     </div>
+                    <div class="row mt-3">
+                      <div class="col-md-6">
+                        <label for="type" class="form-label">Type</label>
+                        <input type="text" class="form-control" id="type" required>
+                      </div>
+                      <div class="col-md-6">
+                        <label for="DWT" class="form-label">DWT</label>
+                        <input type="text" class="form-control" id="DWT" required>
+                      </div>
+                    </div>
+                    <div class="row mt-3">
+                      <div class="col-md-6">
+                        <label for="from1" class="form-label">From</label>
+                        <input type="date" class="form-control" id="from1" required>
+                      </div>
+                      <div class="col-md-6">
+                        <label for="to1" class="form-label">To</label>
+                        <input type="date" class="form-control" id="to1" required>
+                      </div>
+                    </div>
+                    <div class="row mt-3">
+                      <div class="col-md-6">
+                        <label for="total_MMDD" class="form-label">Total MMDD</label>
+                        <input type="text" class="form-control" id="total_MMDD" required>
+                      </div>
+                      <div class="col-md-6">
+                        <label for="reason_for_sign_off" class="form-label">Reason for Sign Off</label>
+                        <input type="text" class="form-control" id="reason_for_sign_off" required>
+                      </div>
+                    </div>
+                    <div class="row mt-3">
+                     
+                    </div>
+                    <div class="row mt-4">
+                      <div class="col-md-6">
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                      </div>
+                    </div>
+                  </form>
                 </div>
-            </div>
-    
+              
+            
+                <div class="container mt-5">
+                    <h2 class="text-center mb-4">Edit Sea Service</h2>
+                    <form id="edit-sea-service-form">
+                      <div class="row">
+                        <div class="col-md-6">
+                          <input type="hidden" id="edit-sea-service-id"> 
+                          <label for="edit-company" class="form-label">Company</label>
+                          <input type="text" class="form-control" id="edit-company" required>
                         </div>
+                        <div class="col-md-6">
+                          <label for="edit-createdBy" class="form-label">Created By</label>
+                          <input type="text" class="form-control" id="edit-createdBy" required>
+                        </div>
+                      </div>
+                      <div class="row mt-3">
+                        <div class="col-md-6">
+                          <label for="edit-rank" class="form-label">Rank</label>
+                          <input type="text" class="form-control" id="edit-rank" required>
+                        </div>
+                        <div class="col-md-6">
+                          <label for="edit-vessel" class="form-label">Vessel</label>
+                          <input type="text" class="form-control" id="edit-vessel" required>
+                        </div>
+                      </div>
+                      <div class="row mt-3">
+                        <div class="col-md-6">
+                          <label for="edit-type" class="form-label">Type</label>
+                          <input type="text" class="form-control" id="edit-type" required>
+                        </div>
+                        <div class="col-md-6">
+                          <label for="edit-DWT" class="form-label">DWT</label>
+                          <input type="text" class="form-control" id="edit-DWT" required>
+                        </div>
+                      </div>
+                      <div class="row mt-3">
+                        <div class="col-md-6">
+                          <label for="edit-from1" class="form-label">From</label>
+                          <input type="date" class="form-control" id="edit-from1" required>
+                        </div>
+                        <div class="col-md-6">
+                          <label for="edit-to1" class="form-label">To</label>
+                          <input type="date" class="form-control" id="edit-to1" required>
+                        </div>
+                      </div>
+                      <div class="row mt-3">
+                        <div class="col-md-6">
+                          <label for="edit-total_MMDD" class="form-label">Total MMDD</label>
+                          <input type="text" class="form-control" id="edit-total_MMDD" required>
+                        </div>
+                        <div class="col-md-6">
+                          <label for="edit-reason_for_sign_off" class="form-label">Reason for Sign Off</label>
+                          <input type="text" class="form-control" id="edit-reason_for_sign_off" required>
+                        </div>
+                      </div>
+                      <div class="row mt-4">
+                        <div class="col-md-6">
+                          <button type="submit" class="btn btn-primary">Update Sea Service</button>
+                        </div>
+                      </div>
                     </form>
-                
-            </div>
-        </div>
-        
-          
-            
-                    <!-- /Account -->
-                      <!-- / Content -->
-
-            <!-- Footer -->
-            <footer class="footer mt-auto py-3 bg-footer-theme">
-              <div class="container">
-                  <div class="d-flex justify-content-between">
-                      <span id="datetime"></span>
-                      <span>Nautilus Shipping</span>
                   </div>
-              </div>
-          </footer>
-            <!-- / Footer -->
-            
+                  <script>
+                                        async function editSeaService(id) {
+                            try {
+                                const token = localStorage.getItem('token');
+                                const response = await axios.get(`http://localhost:3000/candidate/get-sea/${id}`, { headers: { "Authorization": token } });
+                                const seaService = response.data.editSea[0];
+                                console.log("edit response",response.data)
+                
+                                document.getElementById('edit-company').value = seaService.company;
+                                document.getElementById('edit-rank').value = seaService.rank;
+                                document.getElementById('edit-vessel').value = seaService.vessel;
+                                document.getElementById('edit-type').value = seaService.type;
+                                document.getElementById('edit-DWT').value = seaService.DWT;
+                                document.getElementById('edit-from1').value = seaService.from1;
+                                document.getElementById('edit-to1').value = seaService.to1;
+                                document.getElementById('edit-total_MMDD').value = seaService.total_MMDD;
+                                document.getElementById('edit-reason_for_sign_off').value = seaService.reason_for_sign_off;
+                                document.getElementById('edit-createdBy').value = localStorage.getItem('username');
+                
+                                // Store sea service id in a hidden field for reference
+                                document.getElementById('edit-sea-service-id').value = id;
+                            } catch (error) {
+                                console.error('Error fetching sea service record:', error);
+                            }
+                        }
+   
+                    document.addEventListener('DOMContentLoaded', async function () {
 
-            <div class="content-backdrop fade"></div>
-          </div>
-          <!-- Content wrapper -->
-        </div>
-        <!-- / Layout page -->
-      </div>
-
-      <!-- Overlay -->
-      <div class="layout-overlay layout-menu-toggle"></div>
-    </div>
+  
+                        const seaServiceList = document.getElementById('sea-service-list');
+                
+                        // Fetch and display sea service records
+                        try {
+                            const token = localStorage.getItem('token');
+                            const response = await axios.get('http://localhost:3000/candidate/get-sea-service', { headers: { "Authorization": token } });
+                            console.log(response);
+                            const seaServices = response.data;
+                
+                            seaServices.forEach(seaService => {
+                                const seaServiceRow = document.createElement('tr');
+                                seaServiceRow.innerHTML = `
+                                    <td>${seaService.company}</td>
+                                    <td>${seaService.rank}</td>
+                                    <td>${seaService.vessel}</td>
+                                    <td>${seaService.type}</td>
+                                    <td>${seaService.DWT}</td>
+                                    <td>${seaService.from1}</td>
+                                    <td>${seaService.to1}</td>
+                                    <td>${seaService.total_MMDD}</td>
+                                    <td>${seaService.reason_for_sign_off}</td>
+                                    <td>
+                                        <button class='btn btn-warning' onclick="editSeaService('${seaService.id}')">Edit</button>
+                                        <button class='btn btn-danger' onclick="deleteSeaService('${seaService.id}')">Delete</button>
+                                    </td>
+                                `;
+                                seaServiceList.appendChild(seaServiceRow);
+                            });
+                        } catch (error) {
+                            console.error('Error fetching sea service records:', error);
+                        }
+                
+                        // Edit sea service form submission
+                        const createdBy = document.getElementById('createdBy');
+                        createdBy.value = localStorage.getItem('username');
+                
+                        const seaServiceForm = document.getElementById('sea-service-form');
+                
+                        seaServiceForm.addEventListener('submit', async (e) => {
+                            e.preventDefault();
+                
+                            const formData = {
+                                company: document.getElementById('company').value,
+                                rank: document.getElementById('rank').value,
+                                vessel: document.getElementById('vessel').value,
+                                type: document.getElementById('type').value,
+                                DWT: document.getElementById('DWT').value,
+                                from1: document.getElementById('from1').value,
+                                to1: document.getElementById('to1').value,
+                                total_MMDD: document.getElementById('total_MMDD').value,
+                                reason_for_sign_off: document.getElementById('reason_for_sign_off').value,
+                                createdBy: document.getElementById('createdBy').value
+                            };
+                
+                            try {
+                                const token = localStorage.getItem('token');
+                                const id = localStorage.getItem('memId');
+                                const response = await axios.post(`http://localhost:3000/candidate/sea-service/${id}`, formData, { headers: { "Authorization": token } });
+                                console.log(response.data);
+                                alert('Sea Service record added successfully!');
+                                seaServiceForm.reset();
+                            } catch (error) {
+                                console.error('Error adding sea service record:', error);
+                                alert('Error adding sea service record. Please try again.');
+                            }
+                        });
+                
+                        // Function to handle deletion of sea service record
+                      
+                        // Function to handle editing of sea service record
+             
+                        // Edit sea service form submission
+                        const editSeaServiceForm = document.getElementById('edit-sea-service-form');
+                
+                        editSeaServiceForm.addEventListener('submit', async (e) => {
+                            e.preventDefault();
+                
+                            const formData = {
+                                company: document.getElementById('edit-company').value,
+                                rank: document.getElementById('edit-rank').value,
+                                vessel: document.getElementById('edit-vessel').value,
+                                type: document.getElementById('edit-type').value,
+                                DWT: document.getElementById('edit-DWT').value,
+                                from1: document.getElementById('edit-from1').value,
+                                to1: document.getElementById('edit-to1').value,
+                                total_MMDD: document.getElementById('edit-total_MMDD').value,
+                                reason_for_sign_off: document.getElementById('edit-reason_for_sign_off').value,
+                                createdBy: document.getElementById('edit-createdBy').value
+                            };
+                
+                            try {
+                                const token = localStorage.getItem('token');
+                                const id = document.getElementById('edit-sea-service-id').value;
+                                const response = await axios.put(`http://localhost:3000/candidate/edit-sea-service/${id}`, formData, { headers: { "Authorization": token } });
+                                console.log(response);
+                                alert('Sea Service record updated successfully!');
+                                editSeaServiceForm.reset();
+                            } catch (error) {
+                                console.error('Error updating sea service record:', error);
+                                alert('Error updating sea service record. Please try again.');
+                            }
+                        });
+                        
+                    });
+                    async function deleteSeaService(id) {
+                            if (confirm('Are you sure you want to delete this sea service record?')) {
+                                try {
+                                  const token = localStorage.getItem('token')
+                                    const response = await axios.delete(`http://localhost:3000/candidate/delete-sea-service/${id}`,{headers:{"Authorization":token}});
+                                    console.log(response.data);
+                                    location.reload(); // Refresh page after deletion
+                                } catch (error) {
+                                    console.error('Error deleting sea service record:', error);
+                                }
+                            }
+                        }
+                
+                </script>
+                
+                                    
     <!-- / Layout wrapper -->
 
-    <div class="position-fixed bottom-0 end-0 p-3" style="z-index: 1;">
-      <div class="btn-group">
-        <button type="button" class="btn btn-success text-white" data-bs-toggle="dropdown" aria-expanded="false">
-          Instructions
-        </button>
-        <ul class="dropdown-menu" style="max-height: 200px; overflow-y: auto;">
-          <li>
-            <p class="dropdown-item-text"> • The Table shows the list of Contract details for the Candidate.
-              <br><br>•  If you would like to add new Contract details scroll down to see add Contract details form. <br><br>
-              • Once you have added a Contract form if you want to Edit/Delete it then check the table for a "Actions" column which will help you with it.
-            </p>
-          </li>
-          <!-- Add more list items as needed -->
-        </ul>
-      </div>
-    </div>
+   
 
     <!-- Core JS -->
     <!-- build:js assets/vendor/js/core.js -->
@@ -933,7 +893,7 @@ id='logout'>
 
     <!-- Main JS -->
     <script src="../assets/js/main.js"></script>
-    <script src ="./add-c-contract.js"></script>
+    <!-- <script src ="./edit-vessel.js"></script> -->
     <!-- Page JS -->
     <script src="../assets/js/pages-account-settings-account.js"></script>
 
@@ -941,3 +901,21 @@ id='logout'>
     <script async defer src="https://buttons.github.io/buttons.js"></script>
   </body>
 </html>
+
+
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+  

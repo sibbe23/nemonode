@@ -49,6 +49,7 @@ function loadContent(section) {
     document.getElementById('travelContent').style.display = 'none';
     document.getElementById('medicalContent').style.display = 'none';
     document.getElementById('nkdContent').style.display = 'none';
+    document.getElementById('seaServiceContent').style.display = 'none';
 
     // Show the selected content div
     document.getElementById(`${section}Content`).style.display = 'block';
@@ -446,6 +447,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         await fetchAndDisplayTravelDetails(candidateId)
         await fetchAndDisplayMedicalDetails(candidateId)
         await fetchAndDisplayNkdData(candidateId);
+        await fetchAndDisplaySeaService(candidateId);
         const hasUserManagement = decodedToken.userManagement;
     console.log(hasUserManagement)
     if (hasUserManagement) {
@@ -691,3 +693,46 @@ document.getElementById('logout').addEventListener('click', function() {
     // For example, redirect to a login page
     window.location.href = './loginpage.html';
 })
+
+async function fetchAndDisplaySeaService(candidateId) {
+    try {
+        const token = localStorage.getItem('token');
+        const response = await axios.get(`http://localhost:3000/candidate/get-sea/${candidateId}`, {
+            headers: { "Authorization": token }
+        });
+
+        const seaServices = response.data.editSea;
+
+        // Check if seaServices is an array
+        if (Array.isArray(seaServices)) {
+            const seaServiceList = document.getElementById('seaServiceList');
+            seaServiceList.innerHTML = ''; // Clear existing data
+
+            seaServices.forEach(seaService => {
+                const seaServiceRow = document.createElement('tr');
+                seaServiceRow.innerHTML = `
+                    <td>${seaService.company}</td>
+                    <td>${seaService.rank}</td>
+                    <td>${seaService.vessel}</td>
+                    <td>${seaService.type}</td>
+                    <td>${seaService.DWT}</td>
+                    <td>${seaService.from1}</td>
+                    <td>${seaService.to1}</td>
+                    <td>${seaService.total_MMDD}</td>
+                    <td>${seaService.reason_for_sign_off}</td>
+                    <td>
+                        <button onclick="editSeaService('${seaService.id}')">Edit</button>
+                        <button onclick="deleteSeaService('${seaService.id}')">Delete</button>
+                    </td>
+                `;
+                seaServiceList.appendChild(seaServiceRow);
+            });
+        } else {
+            console.error('Sea service data is not in the expected format:', seaServices);
+        }
+    } catch (error) {
+        console.error('Error fetching and displaying sea service records:', error);
+    }
+}
+
+
