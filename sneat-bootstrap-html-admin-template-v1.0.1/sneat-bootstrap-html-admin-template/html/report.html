@@ -294,6 +294,7 @@
               // Add Export to Excel button
               const exportButton = document.createElement('button');
               exportButton.textContent = 'Export to Excel';
+              exportButton.className='btn btn-success'
               exportButton.addEventListener('click', function () {
                   exportToExcel(data);
               });
