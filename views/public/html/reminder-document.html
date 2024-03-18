@@ -15,7 +15,7 @@
       content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0"
     />
 
-    <title>Vessel | Nsnemo</title>
+    <title>Renewal Reminder | Nsnemo</title>
 
     <meta name="description" content="" />
 
@@ -595,29 +595,35 @@ id='logout'>
 
           <!-- Content wrapper -->
           <div class="container-fluid">
-            
-            <div class="container p-5">
-                <h2>Documents with Approaching Expiry Dates</h2>
+            <div class="p-3">
+                <h4>Documents with Approaching Expiry Dates</h4>
                 <div id="loader" class="text-center" style="display: none;">
                     Loading...
                 </div>
                 <div id="error" class="text-center text-danger" style="display: none;">
                     Error: Failed to fetch expiry dates.
                 </div>
-                <table id="documentsTable" class="table table-bordered table-responsive table-sm">
+                <form id="submitButton" class="d-flex justify-content-start">
+                    <input type="date" id="dateInput" class="form-control w-25">
+                    <button type="submit" class="btn btn-primary ms-3">Filter Expiry Date</button>
+                </form>
+                <h4 class="text-center mt-3 mb-0 rounded-0 shadow-none border border-dark card p-3">Documents List</h4>
+                <table id="documentsTable" class="table table-bordered table-striped table-responsive table-sm text-center">
                     <thead>
-                        <tr >
+                        <tr>
                             <th>Document</th>
                             <th>Document Number</th>
                             <th>Issue Date</th>
                             <th>Expiry Date</th>
                             <th>Issue Place</th>
                             <th>STCW</th>
+                            <th>Status</th>
+                            <!-- New column for status -->
                         </tr>
                     </thead>
                     <tbody></tbody>
                 </table>
-               <a href='./indexpage.html'> > Back Home</a>
+                <a href='./indexpage.html'> > Back Home</a>
             </div>
         
             <!-- Bootstrap JS and Axios -->
@@ -627,59 +633,93 @@ id='logout'>
             <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
         
             <script>
-                document.addEventListener('DOMContentLoaded', function () {
-                    const token = localStorage.getItem('token');
-                    const loader = document.getElementById('loader');
-                    const error = document.getElementById('error');
-                    const documentsTable = document.getElementById('documentsTable').getElementsByTagName('tbody')[0];
+              document.addEventListener('DOMContentLoaded', function () {
+                  const token = localStorage.getItem('token');
+                  const loader = document.getElementById('loader');
+                  const error = document.getElementById('error');
+                  const documentsTable = document.getElementById('documentsTable').getElementsByTagName('tbody')[0];
+                  const dateInput = document.getElementById('dateInput');
+                  const submitButton = document.getElementById('submitButton');
+          
+                  // Fetch data when the page loads
+                  fetchData();
+          
+                  submitButton.addEventListener('submit', function (e) {
+                      e.preventDefault();
+                      const selectedDate = dateInput.value;
+                      console.log(selectedDate);
+                      fetchData(selectedDate);
+                  });
+          
+                  function fetchData(selectedDate) {
+                      loader.style.display = 'block';
+                      error.style.display = 'none';
+          
+                      let url = 'http://localhost:3000/candidate/expiry-date';
+                      let requestData = {}; // Initialize request data object
+          
+                      if (selectedDate) {
+                          // If selectedDate is provided, add it to requestData object
+                          requestData = { date: selectedDate };
+                      }
+          
+                      axios.get(url, {
+                          params: requestData, // Pass requestData as params to GET request
+                          headers: {
+                              "Authorization": token
+                          }
+                      })
+                      .then(response => {
+                          renderData(response.data);
+                      })
+                      .catch(error => {
+                          console.error('Error fetching data:', error);
+                          showError();
+                      })
+                      .finally(() => {
+                          loader.style.display = 'none';
+                      });
+                  }
+          
+                  function renderData(documents) {
+                      const tableBody = documentsTable;
+                      tableBody.innerHTML = '';
+          
+                      documents.forEach(document => {
+                          const expiryDate = new Date(document.expiry_date);
+                          const currentDate = new Date();
+                          const isExpired = expiryDate < currentDate;
+                          const status = isExpired ? 'Expired' : 'Need to Renew';
+                          const badgeClass = isExpired ? 'badge btn-danger' : 'badge btn-warning';
+                          const badgeText = isExpired ? 'Expired' : 'Need to Renew';
+                          const row = `
+                              <tr>
+                                  <td>${document.document}</td>
+                                  <td>${document.document_number}</td>
+                                  <td>${formatDate(document.issue_date)}</td>
+                                  <td>${formatDate(expiryDate)}</td>
+                                  <td>${document.issue_place}</td>
+                                  <td>${document.stcw}</td>
+                                  <td><span class="badge ${badgeClass}">${badgeText}</span></td>
+                              </tr>
+                          `;
+                          tableBody.insertAdjacentHTML('beforeend', row);
+                      });
+                  }
+          
+                  function formatDate(date) {
+                      const formattedDate = new Date(date);
+                      return formattedDate.toLocaleDateString(); // Adjust the format as needed
+                  }
+          
+                  function showError() {
+                      error.style.display = 'block';
+                  }
+              });
+          </script>
+          
+        </div>
         
-                    // Fetch data when the page loads
-                    fetchData();
-        
-                    function fetchData() {
-                        loader.style.display = 'block';
-                        error.style.display = 'none';
-        
-                        axios.get('http://localhost:3000/candidate/expiry-date', {
-                            headers: { "Authorization": token }
-                        })
-                            .then(response => {
-                                renderData(response.data);
-                            })
-                            .catch(error => {
-                                console.error('Error fetching data:', error);
-                                showError();
-                            })
-                            .finally(() => {
-                                loader.style.display = 'none';
-                            });
-                    }
-        
-                    function renderData(documents) {
-                        const tableBody = documentsTable;
-                        tableBody.innerHTML = '';
-        
-                        documents.forEach(document => {
-                            const row = `
-                                <tr>
-                                    <td>${document.document}</td>
-                                    <td>${document.document_number}</td>
-                                    <td>${document.issue_date}</td>
-                                    <td>${document.expiry_date}</td>
-                                    <td>${document.issue_place}</td>
-                                    <td>${document.stcw}</td>
-                                </tr>
-                            `;
-                            tableBody.insertAdjacentHTML('beforeend', row);
-                        });
-                    }
-        
-                    function showError() {
-                        error.style.display = 'block';
-                    }
-                });
-            </script>
-          </div>
            <!-- Footer -->
            <footer class="content-footer footer bg-footer-theme">
             <div class="d-flex justify-content-between p-1 m-3 " >
@@ -734,7 +774,6 @@ id='logout'>
 
     <!-- Main JS -->
     <script src="../assets/js/main.js"></script>
-    <script src ="./edit-vessel.js"></script>
     <!-- Page JS -->
     <script src="../assets/js/pages-account-settings-account.js"></script>
 

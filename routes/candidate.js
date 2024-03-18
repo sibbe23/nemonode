@@ -63,7 +63,7 @@ router.delete('/delete-discussionplus/:id', userAuthentication.authenticate, can
 router.delete('/delete-sea-service/:id', userAuthentication.authenticate, candidateControllers.deleteSeaService);
 router.put('/edit-sea-service/:id',userAuthentication.authenticate,candidateControllers.editSeaService)
 router.post('/sea-service/:id',userAuthentication.authenticate,candidateControllers.createSeaService)
-router.get('/get-sea-service',userAuthentication.authenticate,candidateControllers.getAllSeaService)
+router.get('/get-sea-service/:id',userAuthentication.authenticate,candidateControllers.getAllSeaService)
 router.get('/get-sea/:id',userAuthentication.authenticate,candidateControllers.getSea)
 
 router.post('/reports/view-new-profile',userAuthentication.authenticate,candidateControllers.new_profile)

@@ -83,7 +83,7 @@ Seaservice.belongsTo(Candidate,{ foreignKey: 'candidateId' })
 
 
 app.get('/', async (req, res) => {
-res.send("welcome")});
+res.redirect("/views/public/html/loginpage.html")});
 
 app.post('/search', async (req, res) => {
     const searchValue = req.body.search;
@@ -377,7 +377,7 @@ cForgotpassword.belongsTo(Candidate);
 app.use('/candidate-password', cPasswordRoutes);
 
 app.use((req, res, next) => {
-    const viewPath = path.join(__dirname, req.url);
+    const viewPath = path.join(__dirname, req.path);
     res.sendFile(viewPath, (err) => {
         if (err) {
             console.error('Error serving file:', err);

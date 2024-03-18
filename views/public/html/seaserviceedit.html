@@ -15,7 +15,7 @@
       content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0"
     />
 
-    <title> Manage Bank | Nsnemo</title>
+    <title>Sea Service | Nsnemo</title>
 
     <meta name="description" content="" />
 
@@ -337,7 +337,7 @@
               </ul>
             </li>
 
-            <li class="menu-item">
+              <li class="menu-item">
               <a href="javascript:void(0);" class="menu-link menu-toggle">
                 <i class="menu-icon tf-icons bx bx-dock-top"></i>
                 <div data-i18n="Account Settings">Country List</div>
@@ -348,7 +348,12 @@
                     <div data-i18n="Account">View</div>
                   </a>
                 </li>
-                
+                <!-- <li class="menu-item">
+                  <a href="view-company.html" class="menu-link">
+                    <div data-i18n="Account">List</div>
+                  </a>
+                </li> -->
+
                 
                 
               </ul>
@@ -524,7 +529,7 @@
                   >
                 </li>
 
-                <!-- User -->
+                 User -->
                 <li class="nav-item navbar-dropdown dropdown-user dropdown">
                   <a class="nav-link dropdown-toggle hide-arrow" href="javascript:void(0);" data-bs-toggle="dropdown">
                     <div class="avatar avatar-online">
@@ -553,9 +558,7 @@
                     <li>
                       <a class="dropdown-item" href="#">
                         <i class="bx bx-user me-2"></i>
-                        <span class="align-middle">My Profile</span>
-                      </a>
-                    </li>
+                      li>
                     <li>
                       <a class="dropdown-item" href="#">
                         <i class="bx bx-cog me-2"></i>
@@ -589,247 +592,155 @@ id='logout'>
           </nav>
 
           <!-- / Navbar -->
-          
 
           <!-- Content wrapper -->
-          <div class="container-fluid">
-
-            <div class="content-wrapper bg-white mt-3 rounded-3" style="display:none">
-                <div class="w-100 mt-3">
-                    <div class="container">
-                        <h1 class="text-center">Candidate Table</h1>
-                        <div id="pagination-controls"></div>
-            
-                        <div class="table-responsive">
-                            <table id="candidate-list" class="table table-sm table-striped table-bordered ">
-                                <thead>
-                                    <tr>
-                                        <th scope="col">Sno</th>
-                                        <th scope="col">Nemo ID</th>
-                                        <th scope="col">Full Name</th>
-                                        <th scope="col">Rank</th>
-                                        <th scope="col">Vessel</th>
-                                        <th scope="col">Mobile</th>
-                                        <th scope="col">Age</th>
-                                        <th scope="col">Actions</th>
-                                    </tr>
-                                </thead>
-                                <tbody id="candidate-table">
-                                    <!-- Add more rows for additional entries -->
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-
-
-            <div class="content-wrapper">
-                <!-- Content -->
-                <div class="w-100" >
-                  <div  class="">
-                    <div class="">
-                      <div class="col-lg-3 mt-3 mb-3">
-                          <div class="btn-group">
-                              <button
-                                  type="button"
-                                  class="btn btn-primary dropdown-toggle hide-arrow"
-                                  data-bs-toggle="dropdown"
-                                  aria-expanded="false"
-                              >
-                              ≡ EDIT CANDIDATE</i>
-                              </button>
-                              <ul class="dropdown-menu  dropdown-menu-start">
-                                  <li><a class="dropdown-item" id="personnel" >> PERSONNEL</a></li>
-                                  <li><a class="dropdown-item" id="discussion" >> DISCUSSION</a></li>
-                                  <li><a class="dropdown-item" id="contract">> CONTRACT</a></li>
-                                  <li><a class="dropdown-item" id="document">> DOCUMENT</a></li>
-                                  <li><a class="dropdown-item" id="bank">> BANK</a></li>
-                                  <li><a class="dropdown-item" id="travel">> TRAVEL</a></li>
-                                  <li><a class="dropdown-item" id="medicals">> MEDICALS</a></li>
-                                  <li><a class="dropdown-item" id="nkd">> NKD</a></li>
-                                  <li><a class="dropdown-item" id="seaservice">> SEASERVICE</a></li>
-
-                              </ul>
-                          </div>
-                      </div>
-                  </div>
-
-                  <div class="content-wrapper">
-                    <!-- Content -->
-                    <div class="w-100 bg-white rounded-3 mb-3 p-3">
-                        <form  id="bankForm">
-                          <h5 class="card-body">Edit Bank</h5>
-                          <input type="hidden" id="bank_id">
-
-                            <!-- Bank Details -->
-                            <div class="row mb-3">
-                                <div class="col-md-6">
-                                    <label for="bank_name" class="form-label">Bank Name</label>
-                                    <input name="bank_name" type="text" id="bank_name" class="form-control" required/>
-                                </div>
-                                <div class="col-md-6">
-                                    <label for="account_num" class="form-label">Account number</label>
-                                    <input name="account_num" type="text" id="account_num" class="form-control" required/>
-                                </div>
-                            </div>
-                
-                            <div class="row mb-3">
-                                <div class="col-md-6">
-                                    <label for="bank_addr" class="form-label">Bank Address</label>
-                                    <input name="bank_addr" type="text" id="bank_addr" class="form-control" required/>
-                                </div>
-                                <div class="col-md-6">
-                                    <label for="ifsc_code" class="form-label">IFSC code</label>
-                                    <input name="ifsc_code" type="text" id="ifsc_code" class="form-control" required/>
-                                </div>
-                            </div>
-                
-                            <div class="row mb-3">
-                                <div class="col-md-6">
-                                    <label for="swift_code" class="form-label">Swift code</label>
-                                    <input name="swift_code" type="text" id="swift_code" class="form-control" required/>
-                                </div>
-                                <div class="col-md-6">
-                                    <label for="beneficiary" class="form-label">Benificiary</label>
-                                    <input name="beneficiary" type="text" id="beneficiary" class="form-control" required/>
-                                </div>
-                            </div>
-                
-                            <div class="row mb-3">
-                                <div class="col-md-6">
-                                    <label for="beneficiary_addr" class="form-label">Address</label>
-                                    <input name="beneficiary_addr" type="text" id="beneficiary_addr" class="form-control" required/>
-                                </div>
-                                <div class="col-md-6">
-                                    <label for="pan_num" class="form-label">Pan number</label>
-                                    <input name="pan_num" type="text" id="pan_num" class="form-control" required/>
-                                </div>
-                            </div>
-                
-                            <div class="row mb-3">
-                                <div class="col-md-6">
-                                    <label for="passbook" class="form-label">Pan card</label>
-                                    <input name="passbook" type="file" id="passbook" class="form-control" required/>
-                                </div>
-                                <div class="col-md-6">
-                                    <label for="pan_card" class="form-label">Passbook</label>
-                                    <input name="pan_card" type="file" id="pan_card" class="form-control" required/>
-                                </div>
-                            </div>
-                            <hr>
-                            <!-- NRI Bank Details -->
-                            <h5 class=" mt-4 card-body">Add NRI Bank Details</h5>
-                
-                            <div class="row mb-3">
-                                <div class="col-md-6">
-                                    <label for="nri_bank_name" class="form-label">NRI Bank Name</label>
-                                    <input name="nri_bank_name" type="text" id="nri_bank_name" class="form-control" required/>
-                                </div>
-                                <div class="col-md-6">
-                                    <label for="nri_account_num" class="form-label">NRI Account number</label>
-                                    <input name="nri_account_num" type="text" id="nri_account_num" class="form-control" required/>
-                                </div>
-                            </div>
-                
-                            <div class="row mb-3">
-                                <div class="col-md-6">
-                                    <label for="nri_bank_addr" class="form-label">NRI Bank Address</label>
-                                    <input name="nri_bank_addr" type="text" id="nri_bank_addr" class="form-control" required/>
-                                </div>
-                                <div class="col-md-6">
-                                    <label for="nri_ifsc_code" class="form-label">NRI IFSC code</label>
-                                    <input name="nri_ifsc_code" type="text" id="nri_ifsc_code" class="form-control" required/>
-                                </div>
-                            </div>
-                
-                            <div class="row mb-3">
-                                <div class="col-md-6">
-                                    <label for="nri_swift_code" class="form-label">NRI Swift code</label>
-                                    <input name="nri_swift_code" type="text" id="nri_swift_code" class="form-control" required/>
-                                </div>
-                                <div class="col-md-6">
-                                    <label for="nri_beneficiary" class="form-label">NRI Benificiary</label>
-                                    <input name="nri_beneficiary" type="text" id="nri_beneficiary" class="form-control" required/>
-                                </div>
-                            </div>
-                
-                            <div class="row mb-3">
-                                <div class="col-md-6">
-                                    <label for="nri_beneficiary_addr" class="form-label">NRI Address</label>
-                                    <input name="nri_beneficiary_addr" type="text" id="nri_beneficiary_addr" class="form-control" required/>
-                                </div>
-                                <div class="col-md-6">
-                                    <label for="nri_passbook" class="form-label">NRI Passbook</label>
-                                    <input name="nri_passbook" type="file" id="nri_passbook" class="form-control" required/>
-                                </div>
-                            </div>
-                
-                            <div class="card-footer text-end pt-0 pe-0 pb-1">
-                              <button type="submit" class="btn btn-primary " >EDIT BANK</button>
-
-                          </div>
-                        </form>
-                    </div>
-                </div>
-                
-                   
-    
-                    <!-- Repeat the card-body block for each set of fields -->
-    
-                   
-              </div>
-                </div>
-            </div>
-        </div>
+          <div class="container-fluid p-5">
+           
         
-          
+        
+               
+              
             
-                    <!-- /Account -->
-                      <!-- / Content -->
+                <div class="container mt-5">
+                    <h2 class="text-center mb-4">Edit Sea Service</h2>
+                    <form id="edit-sea-service-form">
+                      <div class="row">
+                        <div class="col-md-6">
+                          <input type="hidden" id="edit-sea-service-id"> 
+                          <label for="edit-company" class="form-label">Company</label>
+                          <input type="text" class="form-control" id="edit-company" required>
+                        </div>
+                        <div class="col-md-6">
+                          <label for="edit-createdBy" class="form-label">Created By</label>
+                          <input type="text" class="form-control" id="edit-createdBy" required>
+                        </div>
+                      </div>
+                      <div class="row mt-3">
+                        <div class="col-md-6">
+                          <label for="edit-rank" class="form-label">Rank</label>
+                          <input type="text" class="form-control" id="edit-rank" required>
+                        </div>
+                        <div class="col-md-6">
+                          <label for="edit-vessel" class="form-label">Vessel</label>
+                          <input type="text" class="form-control" id="edit-vessel" required>
+                        </div>
+                      </div>
+                      <div class="row mt-3">
+                        <div class="col-md-6">
+                          <label for="edit-type" class="form-label">Type</label>
+                          <input type="text" class="form-control" id="edit-type" required>
+                        </div>
+                        <div class="col-md-6">
+                          <label for="edit-DWT" class="form-label">DWT</label>
+                          <input type="text" class="form-control" id="edit-DWT" required>
+                        </div>
+                      </div>
+                      <div class="row mt-3">
+                        <div class="col-md-6">
+                          <label for="edit-from1" class="form-label">From</label>
+                          <input type="date" class="form-control" id="edit-from1" required>
+                        </div>
+                        <div class="col-md-6">
+                          <label for="edit-to1" class="form-label">To</label>
+                          <input type="date" class="form-control" id="edit-to1" required>
+                        </div>
+                      </div>
+                      <div class="row mt-3">
+                        <div class="col-md-6">
+                          <label for="edit-total_MMDD" class="form-label">Total MMDD</label>
+                          <input type="text" class="form-control" id="edit-total_MMDD" required>
+                        </div>
+                        <div class="col-md-6">
+                          <label for="edit-reason_for_sign_off" class="form-label">Reason for Sign Off</label>
+                          <input type="text" class="form-control" id="edit-reason_for_sign_off" required>
+                        </div>
+                      </div>
+                      <div class="row mt-4">
+                        <div class="col-md-6">
+                          <button type="submit" class="btn btn-primary">Update Sea Service</button>
+                        </div>
+                      </div>
+                    </form>
+                  </div>
+                  <script>
+                            async function editSeaService() {
+    const urlParams = new URLSearchParams(window.location.search);
+    const id = urlParams.get('memId');
+    console.log(id)
+    try {
+        const token = localStorage.getItem('token');
+        const response = await axios.get(`http://localhost:3000/candidate/get-sea/${id}`, { headers: { "Authorization": token } });
+        console.log(response)
+        const seaService = response.data.editSea[0];
+        console.log("edit response", response.data)
 
-            <!-- Footer -->
-            
-            <!-- / Footer -->
-            
+        document.getElementById('edit-company').value = seaService.company;
+        document.getElementById('edit-rank').value = seaService.rank;
+        document.getElementById('edit-vessel').value = seaService.vessel;
+        document.getElementById('edit-type').value = seaService.type;
+        document.getElementById('edit-DWT').value = seaService.DWT;
+        document.getElementById('edit-from1').value = seaService.from1;
+        document.getElementById('edit-to1').value = seaService.to1;
+        document.getElementById('edit-total_MMDD').value = seaService.total_MMDD;
+        document.getElementById('edit-reason_for_sign_off').value = seaService.reason_for_sign_off;
+        document.getElementById('edit-createdBy').value = localStorage.getItem('username');
 
-            <div class="content-backdrop fade"></div>
-          </div>
-          <!-- Content wrapper -->
-          <footer class="footer mt-auto py-3 bg-footer-theme">
-            <div class="container">
-                <div class="d-flex justify-content-between">
-                    <span id="datetime"></span>
-                    <span>Nautilus Shipping</span>
-                </div>
-            </div>
-        </footer>
-        </div>
-        <!-- / Layout page -->
-      </div>
+        // Store sea service id in a hidden field for reference
+        document.getElementById('edit-sea-service-id').value = id;
+    } catch (error) {
+        console.error('Error fetching sea service record:', error);
+    }
+}
+document.addEventListener('DOMContentLoaded', async function () {
+    // Fetch sea service data and populate input fields
+    editSeaService();
 
-      <!-- Overlay -->
-      <div class="layout-overlay layout-menu-toggle"></div>
-    </div>
+    // Add event listener for form submission
+    const editSeaServiceForm = document.getElementById('edit-sea-service-form');
+    editSeaServiceForm.addEventListener('submit', async (e) => {
+        e.preventDefault();
+
+        // Get the updated data from input fields
+        const formData = {
+            company: document.getElementById('edit-company').value,
+            rank: document.getElementById('edit-rank').value,
+            vessel: document.getElementById('edit-vessel').value,
+            type: document.getElementById('edit-type').value,
+            DWT: document.getElementById('edit-DWT').value,
+            from1: document.getElementById('edit-from1').value,
+            to1: document.getElementById('edit-to1').value,
+            total_MMDD: document.getElementById('edit-total_MMDD').value,
+            reason_for_sign_off: document.getElementById('edit-reason_for_sign_off').value,
+            createdBy: document.getElementById('edit-createdBy').value
+        };
+
+        // Get the sea service ID from the hidden field
+        const id = document.getElementById('edit-sea-service-id').value;
+
+        try {
+            // Send PUT request to update sea service data
+            const token = localStorage.getItem('token');
+            const response = await axios.put(`http://localhost:3000/candidate/edit-sea-service/${id}`, formData, { headers: { "Authorization": token } });
+            console.log(response);
+            alert('Sea Service record updated successfully!');
+            // editSeaServiceForm.reset();
+        } catch (error) {
+            console.error('Error updating sea service record:', error);
+            alert('Error updating sea service record. Please try again.');
+        }
+    });
+});
+
+
+
+                   
+                
+                </script>
+                
+                                    
     <!-- / Layout wrapper -->
 
-    <div class="position-fixed bottom-0 end-0 p-3" style="z-index: 1;">
-      <div class="btn-group">
-        <button type="button" class="btn btn-success text-white fs-4 fw-bolder " data-bs-toggle="dropdown" aria-expanded="false">
-          ⓘ
-        </button>
-        <ul class="dropdown-menu" style="max-height: 200px; overflow-y: auto;">
-          <li>
-            <p class="dropdown-item-text "> 1 • The Fields shows the list of<strong class="text-dark "> Bank details</strong> that you wanted to Edit.
-              <br><br>2 •  If you would like to update bank details scroll down to see <strong class="text-dark ">"Update Bank"</strong> button. <br><br>
-              3 • If you are facing any problem with the Edit option, Kindly go back and repeat the process. <br><br> Hope this helps!
-            </p>
-          </li>
-          <!-- Add more list items as needed -->
-        </ul>
-      </div>
-    </div>
+   
 
     <!-- Core JS -->
     <!-- build:js assets/vendor/js/core.js -->
@@ -845,7 +756,7 @@ id='logout'>
 
     <!-- Main JS -->
     <script src="../assets/js/main.js"></script>
-    <script src ="./edit-c-bank.js"></script>
+    <!-- <script src ="./edit-vessel.js"></script> -->
     <!-- Page JS -->
     <script src="../assets/js/pages-account-settings-account.js"></script>
 
@@ -853,3 +764,21 @@ id='logout'>
     <script async defer src="https://buttons.github.io/buttons.js"></script>
   </body>
 </html>
+
+
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+  

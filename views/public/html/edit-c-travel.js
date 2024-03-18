@@ -84,6 +84,9 @@ document.addEventListener('DOMContentLoaded', async function () {
                     case "nkd":
                         destinationPage = `./add-c-nkd.html?memId=${memId}`;
                         break;
+                        case 'seaservice':
+                        destinationPage=`./seaservicetable.html?memId=${memId};`;
+                        break;
                     default:
                         // Handle default case or do nothing
                         break;

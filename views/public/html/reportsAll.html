@@ -56,6 +56,17 @@
 
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script>
+const token = localStorage.getItem('token')
+function decodeToken(token) {
+    // Implementation depends on your JWT library
+    // Here, we're using a simple base64 decode
+    const base64Url = token.split('.')[1];
+    const base64 = base64Url.replace('-', '+').replace('_', '/');
+    return JSON.parse(atob(base64));
+}
+const decodedToken = decodeToken(token)
+const permission = decodedToken.reports_all
+console.log(decodedToken)
         document.getElementById('exportCandidatesButton').addEventListener('click', async () => {
             try {
                 const endpoint = 'http://localhost:3000/candidate/view-candidate';

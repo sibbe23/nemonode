@@ -11,7 +11,7 @@ document.addEventListener("DOMContentLoaded", function() {
             const memId= localStorage.getItem('memId')
             // Define the destination URLs based on the clicked item
             var destinationPage = "";
-            switch (itemId) {
+           switch (itemId) {
                 case "personnel":
                     destinationPage = `./edit-candidate-2.html?memId=${memId}`;
                     break;
@@ -36,6 +36,9 @@ document.addEventListener("DOMContentLoaded", function() {
                 case "nkd":
                     destinationPage = `./add-c-nkd.html?memId=${memId}`;
                     break;
+                    case 'seaservice':
+                        destinationPage=`./seaservicetable.html?memId=${memId};`;
+                        break;
                 default:
                     // Handle default case or do nothing
                     break;

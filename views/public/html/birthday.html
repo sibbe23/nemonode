@@ -15,7 +15,7 @@
       content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0"
     />
 
-    <title>Vessel | Nsnemo</title>
+    <title>Birthday Reminder | Nsnemo</title>
 
     <meta name="description" content="" />
 
@@ -595,13 +595,12 @@ id='logout'>
 
           <!-- Content wrapper -->
           <div class="container-fluid">
-            
             <div class="container p-5">
                 <h4 class="text-center">Birthday Reminder</h4>
                 <div class="row justify-content-center mb-4">
-                    <div class="col-md-4 bg-white text-center p-5">
-                        <label for="date">Select Date:</label>
-                        <input type="date" id="date" class="btn btn-secondary mt-3 mb-3">
+                    <div class="col-md-5 bg-white text-center p-5">
+                        <label for="date">Select Date:</label><br>
+                        <input type="date" id="date" class="btn btn-secondary mt-3 mb-3"><br>
                         <button id="submitBtn" class="btn btn-primary">Submit</button>
                     </div>
                 </div>
@@ -611,8 +610,8 @@ id='logout'>
                 <div id="error" class="text-center text-danger" style="display: none;">
                     Error: Failed to fetch data.
                 </div>
-                <div id="tableContainer" class="table-responsive card p-5" style="display: none;">
-                    <div class="text-center  p-3 fw-bolder" style="background-color:white;">BIRTHDAYS</div>
+                <div id="tableContainer" class="table-responsive  p-2 mt-0 pt-0" style="display: none;">
+                    <div class="text-center  p-3 fw-bolder">BIRTHDAYS</div>
                     <table id="candidatesTable" class="table table-sm table-bordered table-striped">
                         <thead>
                             <tr class="text-center">
@@ -623,84 +622,107 @@ id='logout'>
                                 <th style="background-color: orange;" class="p-1 text-white">Mobile</th>
                                 <th style="background-color: orange;" class="p-1 text-white">Email</th>
                                 <th style="background-color: orange;" class="p-1 text-white">Date of Birth</th>
+                                <th style="background-color: orange;" class="p-1 text-white">Upcoming Birthday</th>
                             </tr>
                         </thead>
                         <tbody></tbody>
                     </table>
                 </div>
             </div>
-        
-            <!-- Bootstrap JS and Axios -->
-            <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-            <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
-            <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-            <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-        
-            <script>
-                document.addEventListener('DOMContentLoaded', function () {
-                    const token = localStorage.getItem('token')
-                    const dateInput = document.getElementById('date');
-                    const submitBtn = document.getElementById('submitBtn');
-                    const loader = document.getElementById('loader');
-                    const error = document.getElementById('error');
-                    const tableContainer = document.getElementById('tableContainer');
-                    const candidatesTable = document.getElementById('candidatesTable').getElementsByTagName('tbody')[0];
-                    submitBtn.addEventListener('click', function () {
-                        const selectedDate = dateInput.value;
-                        fetchData(selectedDate);
-                    });
-                    fetchData();
-                    function fetchData(date) {
-                        loader.style.display = 'block';
-                        error.style.display = 'none';
-                        tableContainer.style.display = 'none';
-        
-                        axios.get('http://localhost:3000/candidate/birthday', {
-                            params: { date },
-                            headers:{"Authorization":token
-                        }
-                        })
-                        .then(response => {
-                            renderData(response.data.candidates);
-                        })
-                        .catch(error => {
-                            console.error('Error fetching data:', error);
-                            showError();
-                        })
-                        .finally(() => {
-                            loader.style.display = 'none';
-                        });
-                    }
-        
-                    function renderData(candidates) {
-                        candidatesTable.innerHTML = '';
-        
-                        candidates.forEach(candidate => {
-                            const row = `
-                                <tr>
-                                    <td>${candidate.candidateId}</td>
-                                    <td>${candidate.fname}</td>
-                                    <td>${candidate.lname}</td>
-                                    <td>${candidate.c_rank}</td>
-                                    <td class="text-center">${candidate.c_mobi1}</td>
-                                    <td>${candidate.email1}</td>
-                                    <td class="text-center">${new Date(candidate.dob).toLocaleDateString()}</td>
-                                </tr>
-                            `;
-                            candidatesTable.insertAdjacentHTML('beforeend', row);
-                        });
-        
-                        tableContainer.style.display = 'block';
-                    }
-        
-                    function showError() {
-                        error.style.display = 'block';
-                    }
-                });
-            </script>
-                           <a href='./indexpage.html'> > Back Home</a>
-
-          </div>
+        </div>
+    
+        <!-- Bootstrap JS and Axios -->
+        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    
+        <script>
+          document.addEventListener('DOMContentLoaded', function () {
+              const token = localStorage.getItem('token');
+              const dateInput = document.getElementById('date');
+              const submitBtn = document.getElementById('submitBtn');
+              const loader = document.getElementById('loader');
+              const error = document.getElementById('error');
+              const tableContainer = document.getElementById('tableContainer');
+              const candidatesTable = document.getElementById('candidatesTable').getElementsByTagName('tbody')[0];
+      
+              submitBtn.addEventListener('click', function () {
+                  const selectedDate = dateInput.value;
+                  fetchData(selectedDate);
+              });
+      
+              fetchData();
+      
+              function fetchData(date) {
+                  loader.style.display = 'block';
+                  error.style.display = 'none';
+                  tableContainer.style.display = 'none';
+      
+                  axios.get('http://localhost:3000/candidate/birthday', {
+                      params: { date },
+                      headers: { "Authorization": token }
+                  })
+                  .then(response => {
+                      renderData(response.data.candidates);
+                  })
+                  .catch(error => {
+                      console.error('Error fetching data:', error);
+                      showError();
+                  })
+                  .finally(() => {
+                      loader.style.display = 'none';
+                  });
+              }
+      
+              function renderData(candidates) {
+                  candidatesTable.innerHTML = '';
+      
+                  candidates.forEach(candidate => {
+                      const dob = new Date(candidate.dob);
+                      const today = new Date();
+                      today.setHours(0, 0, 0, 0); // Set hours to 0 for accurate comparison
+                      const upcomingBirthday = calculateUpcomingBirthday(dob, today);
+      
+                      const row = `
+                          <tr>
+                              <td>${candidate.candidateId}</td>
+                              <td>${candidate.fname}</td>
+                              <td>${candidate.lname}</td>
+                              <td >${candidate.c_rank}</td>
+                              <td class="text-center">${candidate.c_mobi1}</td>
+                              <td>${candidate.email1}</td>
+                              <td class="text-center">${dob.toLocaleDateString()}</td>
+                              <td class="text-center"><span class="badge ${upcomingBirthday.class}">${upcomingBirthday.text}</span></td>
+                          </tr>
+                      `;
+                      candidatesTable.insertAdjacentHTML('beforeend', row);
+                  });
+      
+                  tableContainer.style.display = 'block';
+              }
+      
+              function calculateUpcomingBirthday(dob, today) {
+                  const nextBirthday = new Date(today.getFullYear(), dob.getMonth(), dob.getDate());
+                  if (today > nextBirthday) {
+                      nextBirthday.setFullYear(nextBirthday.getFullYear() + 1);
+                  }
+                  const daysUntilBirthday = Math.ceil((nextBirthday - today) / (1000 * 60 * 60 * 24));
+                  if (daysUntilBirthday === 0) {
+                      return { text: 'Today!', class: 'bg-success' };
+                  } else if (daysUntilBirthday === 1) {
+                      return { text: 'Tomorrow', class: 'bg-primary' };
+                  } else {
+                      return { text: `In ${daysUntilBirthday} days`, class: 'bg-secondary' };
+                  }
+              }
+      
+              function showError() {
+                  error.style.display = 'block';
+              }
+          });
+      </script>
+      
     
         
 
@@ -740,7 +762,6 @@ id='logout'>
 
     <!-- Main JS -->
     <script src="../assets/js/main.js"></script>
-    <script src ="./edit-vessel.js"></script>
     <!-- Page JS -->
     <script src="../assets/js/pages-account-settings-account.js"></script>
 

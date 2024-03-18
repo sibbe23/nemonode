@@ -161,11 +161,12 @@ async function displayUsers() {
                 <td style="font-size:12px">${user.userClient}</td>
                 <td style="font-size:12px;">${user.createdBy}</td>
                 <td style="font-size:12px">${user.master_create}</td>
-
+                <td style ='font-size:12px">${user.reports}</td>
+                <td style ='font-size:12px">${user.reports_all}</td>
                 <td style="font-size:12px">${user.disableUser}</td>
                 
                 <td>
-    <button class="btn btn-sm m-0 p-0" onclick="editUser(${user.id},'${user.userName}', '${user.lastName}', '${user.userEmail}','${user.userPassword}', '${user.userPhone}', '${user.userGroup}', '${user.userVendor}', '${user.userClient}', '${user.createdBy}', '${user.disableUser}', '${user.readOnly}', '${user.Write}', '${user.imports}', '${user.exports}','${user.userManagement}','${user.vendorManagement}', '${user.reports}','${user.master_create}' ,event)">
+    <button class="btn btn-sm m-0 p-0" onclick="editUser(${user.id},'${user.userName}', '${user.lastName}', '${user.userEmail}','${user.userPassword}', '${user.userPhone}', '${user.userGroup}', '${user.userVendor}', '${user.userClient}', '${user.createdBy}', '${user.disableUser}', '${user.readOnly}', '${user.Write}', '${user.imports}', '${user.exports}','${user.userManagement}','${user.vendorManagement}', '${user.reports}','${user.reports_all}','${user.master_create}' ,event)">
         <i onMouseOver="this.style.color='seagreen'" onMouseOut="this.style.color='gray'" class="fa fa-pencil"></i>
     </button>
     ${!isCurrentUser ? // Render delete button if the current user is not the logged-in user

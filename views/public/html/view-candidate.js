@@ -697,11 +697,11 @@ document.getElementById('logout').addEventListener('click', function() {
 async function fetchAndDisplaySeaService(candidateId) {
     try {
         const token = localStorage.getItem('token');
-        const response = await axios.get(`http://localhost:3000/candidate/get-sea/${candidateId}`, {
+        const response = await axios.get(`http://localhost:3000/candidate/get-sea-service/${candidateId}`, {
             headers: { "Authorization": token }
         });
 
-        const seaServices = response.data.editSea;
+        const seaServices = response.data;
 
         // Check if seaServices is an array
         if (Array.isArray(seaServices)) {
@@ -736,3 +736,21 @@ async function fetchAndDisplaySeaService(candidateId) {
 }
 
 
+async function deleteSeaService(id) {
+    if (confirm('Are you sure you want to delete this sea service record?')) {
+        try {
+            const token = localStorage.getItem('token');
+            await axios.delete(`http://localhost:3000/candidate/delete-sea-service/${id}`, { headers: { "Authorization": token } });
+            // Remove the corresponding row from the table
+            const seaServiceRow = document.getElementById(`seaServiceRow-${id}`);
+            seaServiceRow.remove();
+        } catch (error) {
+            console.error('Error deleting sea service record:', error);
+        }
+    }
+}
+
+function editSeaService(id) {
+    // Redirect to seaservice.html with the ID parameter
+    window.location.href = `seaserviceedit.html?memId=${id}`;
+}

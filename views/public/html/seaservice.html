@@ -15,7 +15,7 @@
       content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0"
     />
 
-    <title>Vessel | Nsnemo</title>
+    <title>Sea Service | Nsnemo</title>
 
     <meta name="description" content="" />
 
@@ -759,7 +759,8 @@ id='logout'>
                         // Fetch and display sea service records
                         try {
                             const token = localStorage.getItem('token');
-                            const response = await axios.get('http://localhost:3000/candidate/get-sea-service', { headers: { "Authorization": token } });
+                            const id = localStorage.getItem('memId')
+                            const response = await axios.get(`http://localhost:3000/candidate/get-sea-service/${id}`, { headers: { "Authorization": token } });
                             console.log(response);
                             const seaServices = response.data;
                 

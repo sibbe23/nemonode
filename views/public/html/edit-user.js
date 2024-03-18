@@ -113,6 +113,11 @@ if (queryParams.reports==='true') {
 } else {
     document.getElementById('u_reports').checked = false;
 }
+if (queryParams.reports_all==='true') {
+    document.getElementById('u_reports_all').checked = true;
+} else {
+    document.getElementById('u_reports_all').checked = false;
+}
 
 
 
